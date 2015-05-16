@@ -1,0 +1,57 @@
+﻿@model Semantic_analysis.Models.TextAnalysis
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<link href="@Url.Content(@"C:\Users\NotePad.by\Documents\Visual Studio 2013\Projects\Semantic_analysis\Semantic_analysis\Content\GetText_Style.css")"
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>GetText</title>
+</head>
+<body style="background-color:gray">
+    <div style="color:white; background-color:green; border-radius:20px; width:80%; padding:10px">
+        @Model.Text
+    </div>
+    <br>
+    <div style="color:white; background-color:green; border-radius:20px; width: 50%; margin-left: 30px; padding-left:30px">
+        <table>
+            <tr>
+                <td>Длина текста</td>
+                <td>@Model.GetLength()</td>
+            </tr>
+            <tr>
+                <td>Длина текста без пробелов</td>
+                <td>@Model.GetLengthWithNoSpaces()</td>
+            </tr>
+            <tr>
+                <td>Количество слов в тексте</td>
+                <td>@Model.GetNumberOfWords()</td>
+            </tr>
+            <tr>
+                <td>Количество уникальных слов в тексте</td>
+                <td>@Model.GetNumberUniqeWords()</td>
+            </tr>
+            <tr>
+                <td>Количество стоп-слов в тексте</td>
+                <td>@Model.GetNumberStopWords()</td>
+            </tr>
+            <tr>
+                <td>Процент воды в тексте</td>
+                <td>@Model.GetWaterValue()</td>
+            </tr>
+        </table>
+     </div>
+       
+    <div>
+        @foreach (var i in Model.GetAllUniqeWords())
+        {   
+            <span style="color:white">@i</span><br>
+        }
+        
+    </div>
+</body>
+</html>
